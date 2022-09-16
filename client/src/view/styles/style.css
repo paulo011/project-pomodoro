@@ -1,0 +1,45 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  font-family: roboto;
+  background-color: #FFDE59;
+  color: #2E3332;
+}
+
+#app{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+h3, h1, p{
+  align-content: center;
+  text-align:center;
+  margin-bottom: 0;
+}
+
+select{
+  align-items: center;
+  text-align: center;
+  width: 220px;
+  height: 35px;
+  display: block;
+  border-radius: 5px;
+}
+
+button{
+align-items: center;
+  text-align: center;
+  width: 220px;
+  height: 35px;
+  display: block;
+  margin-top: 5px;
+  border-radius: 5px;
+
+}
