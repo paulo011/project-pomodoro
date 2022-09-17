@@ -1,34 +1,38 @@
 class Pomodoro{
-  constructor(cicle, workMinutes){
+  constructor(cicle, workMinutes, timer){
   this.cicle = cicle,
   this.workMinutes = workMinutes
+  this.countMinutes = 0
+  this.countSecond = 0
+  this.timer = timer
   }
 
-  PomodoroCounter(counterRender){
-  let countMinutes = 0
-  let countSecond = 0
+  counter(showCounter) {
 
-    const timer = setInterval(()=> {
+    const count =  setInterval(()=> {
+      if (this.countMinutes < 10 && this.countSecond < 10){
+        showCounter.innerText = `0${this.countMinutes}:0${this.countSecond}`
+      }else if(this.countSecond < 10){
+        showCounter.innerText = `${this.countMinutes}:0${this.countSecond}`
+      }else if(this.countMinutes < 10){
+        showCounter.innerText = `0${this.countMinutes}:${this.countSecond}`
+      }else{
+        showCounter.innerText = `${this.countMinutes}:${this.countSecond}`
+      }
 
-      //TODO parameter to render counter here
-
-      if(this.cicle > 1 && countMinutes === this.workMinutes){
+      if(this.cicle > 1 && this.countMinutes === this.workMinutes){
         this.cicle -= 1
-        countMinutes = 0
-        countSecond = 0
+        this.countMinutes = 0
+        this.countSecond = 0
       }
 
-      countMinutes < this.workMinutes ? countSecond += 1 : clearInterval(timer)
+      this.countMinutes < this.workMinutes ? this.countSecond += 1 : clearInterval(count)
 
-      if(countSecond === 60){
-        countMinutes += 1
-        countSecond = 0
+      if(this.countSecond === 60){
+        this.countMinutes += 1
+        this.countSecond = 0
       }
-
     }, 1000)
   }
-} 
+}
 
-//test
-const pomo = new Pomodoro(4, 3)
-console.log(pomo.PomodoroCounter())
