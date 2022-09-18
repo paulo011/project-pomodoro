@@ -1,7 +1,7 @@
 class Select{
-  constructor(id, name){
+  constructor(className, name){
     this.element = document.createElement('select')
-    this.element.id = id
+    this.element.className = className
     this.element.name = name
     this.options = []
   }

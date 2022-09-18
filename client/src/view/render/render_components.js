@@ -10,27 +10,27 @@ class RenderComponents{
     this.app = new Div("app")
     this.headerMain = new Header("h1","header-main","Pomodoro")
     this.app.addChild(this.headerMain.element)
-    this.titleTimeWork = new Header("h3", "title-time-work", "Time Work")
-    this.app.addChild(this.titleTimeWork.element)
-    this.selectTimeWork = new Select('start-timer', "start-timer")
-    let interatorStart = 10
-    while(interatorStart <= 60){
-      this.selectTimeWork.addOptions(new OptionsSelect(interatorStart, `${interatorStart} Minutes`))
-      interatorStart += 5
+    this.titleWorkSession = new Header("h3", "title-work-session", "Work Session")
+    this.app.addChild(this.titleWorkSession.element)
+    this.selectWorkSession = new Select('select-work-session', "select-work-session")
+    let interatorWork = 10
+    while(interatorWork <= 60){
+      this.selectWorkSession.addOptions(new OptionsSelect(interatorWork, `${interatorWork} Minutes`))
+      interatorWork += 5
     }
-    this.selectTimeWork.addChild(this.selectTimeWork.options)
-    this.app.addChild(this.selectTimeWork.element)
+    this.selectWorkSession.addChild(this.selectWorkSession.options)
+    this.app.addChild(this.selectWorkSession.element)
 
-    this.titleBreak= new Header("h3", "title-break", "Break")
-    this.app.addChild(this.titleBreak.element)
-    this.selectBreak = new Select('select-break', "Break")
+    this.titleShortBreak= new Header("h3", "title-short-break", "Short Break")
+    this.app.addChild(this.titleShortBreak.element)
+    this.selectShortBreak = new Select('select-short-break', "Select Short Break")
     let interatorBreak = 5
     while (interatorBreak <= 30){
-      this.selectBreak.addOptions(new OptionsSelect(interatorBreak, `${interatorBreak} Minutes`))
+      this.selectShortBreak.addOptions(new OptionsSelect(interatorBreak, `${interatorBreak} Minutes`))
       interatorBreak += 5
     }
-    this.selectBreak.addChild(this.selectBreak.options)
-    this.app.addChild(this.selectBreak.element)
+    this.selectShortBreak.addChild(this.selectShortBreak.options)
+    this.app.addChild(this.selectShortBreak.element)
 
     this.titleCicle = new Header("h3", "title-cicle", "Cicle")
     this.app.addChild(this.titleCicle.element)

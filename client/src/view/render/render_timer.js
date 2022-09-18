@@ -9,12 +9,16 @@ class RenderTimer{
     const buttonStart = document.querySelector("#button-start")
     const buttonStop = document.querySelector("#button-stop")
     const timer = document.querySelector(".timer")
-    let cicle = 2
-    let workMinutes = 2
+
     let second = 0
     let minutes = 0
 
     buttonStart.addEventListener("click",() => {
+      const WorkSession = document.querySelector(".select-work-session").value
+      const shortBreak = document.querySelector(".select-short-break").value
+      const cicle = document.querySelector(".select-cicle").value
+      console.log(cicle, WorkSession, shortBreak)
+      let cicleCount = parseInt(cicle)
 
       const count =  setInterval(()=> {
         buttonStop.addEventListener("click",()=> clearInterval(count)
@@ -29,13 +33,13 @@ class RenderTimer{
           timer.innerText = `${minutes}:${second}`
         }
 
-        if(cicle > 1 && minutes === workMinutes){
-          cicle -= 1
+        if(cicleCount > 1 && minutes === WorkSession){
+          cicleCount -= 1
           minutes = 0
           second = 0
         }
 
-        minutes < workMinutes ? second += 1 : clearInterval(count)
+        minutes < WorkSession ? second += 1 : clearInterval(count)
 
         if(second === 60){
           minutes += 1
