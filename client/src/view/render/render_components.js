@@ -1,54 +1,61 @@
 class RenderComponents{
   constructor(){
-  this.app = new Div("app")
+    this.app = new Div("app")
+    this.timer = {}
+    this.button = {}
+
   }
 
   renderOptions(){
     this.app = new Div("app")
-    const headerMain = new Header("h1","header-main","Pomodoro")
-    this.app.addChild(headerMain.element)
-    const titleTimeWork = new Header("h3", "title-time-work", "Time Work")
-    this.app.addChild(titleTimeWork.element)
-    const selectTimeWork = new Select('start-timer', "start-timer")
-    selectTimeWork.addOptions(new OptionsSelect(10, "10 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(15, "15 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(20, "20 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(25, "25 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(30, "30 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(35, "35 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(40, "40 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(45, "45 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(50, "50 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(55, "55 minutes"))
-    selectTimeWork.addOptions(new OptionsSelect(60, "60 minutes"))
-    selectTimeWork.addChild(selectTimeWork.options)
-    this.app.addChild(selectTimeWork.element)
-    const titleBreak= new Header("h3", "title-break", "Break")
-    this.app.addChild(titleBreak.element)
-    const selectBreak = new Select('select-break', "Break")
-    selectBreak.addOptions(new OptionsSelect(5, "5 minutes"))
-    selectBreak.addOptions(new OptionsSelect(10, "10 minutes"))
-    selectBreak.addOptions(new OptionsSelect(15, "15 minutes"))
-    selectBreak.addOptions(new OptionsSelect(20, "20 minutes"))
-    selectBreak.addOptions(new OptionsSelect(25, "25 minutes"))
-    selectBreak.addOptions(new OptionsSelect(30, "30 minutes"))
-    selectBreak.addChild(selectBreak.options)
-    this.app.addChild(selectBreak.element)
-    const titleCicle = new Header("h3", "title-cicle", "Cicle")
-    this.app.addChild(titleCicle.element)
-    const selectCicle = new Select("select-cicle", "Cicle")
-    selectCicle.addOptions(new OptionsSelect(2, "2"))
-    selectCicle.addOptions(new OptionsSelect(3, "3"))
-    selectCicle.addOptions(new OptionsSelect(4, "4"))
-    selectCicle.addOptions(new OptionsSelect(5, "5"))
-    selectCicle.addOptions(new OptionsSelect(6, "6"))
-    selectCicle.addOptions(new OptionsSelect(7, "7"))
-    selectCicle.addOptions(new OptionsSelect(8, "8"))
-    selectCicle.addOptions(new OptionsSelect(9, "9"))
-    selectCicle.addOptions(new OptionsSelect(10, "10"))
-    selectCicle.addChild(selectCicle.options)
-    this.app.addChild(selectCicle.element)
-    const buttonStart = new Button("button-start", 'Start')
-    this.app.addChild(buttonStart.element)
+    this.headerMain = new Header("h1","header-main","Pomodoro")
+    this.app.addChild(this.headerMain.element)
+    this.titleTimeWork = new Header("h3", "title-time-work", "Time Work")
+    this.app.addChild(this.titleTimeWork.element)
+    this.selectTimeWork = new Select('start-timer', "start-timer")
+    let interatorStart = 10
+    while(interatorStart <= 60){
+      this.selectTimeWork.addOptions(new OptionsSelect(interatorStart, `${interatorStart} Minutes`))
+      interatorStart += 5
+    }
+    this.selectTimeWork.addChild(this.selectTimeWork.options)
+    this.app.addChild(this.selectTimeWork.element)
+
+    this.titleBreak= new Header("h3", "title-break", "Break")
+    this.app.addChild(this.titleBreak.element)
+    this.selectBreak = new Select('select-break', "Break")
+    let interatorBreak = 5
+    while (interatorBreak <= 30){
+      this.selectBreak.addOptions(new OptionsSelect(interatorBreak, `${interatorBreak} Minutes`))
+      interatorBreak += 5
+    }
+    this.selectBreak.addChild(this.selectBreak.options)
+    this.app.addChild(this.selectBreak.element)
+
+    this.titleCicle = new Header("h3", "title-cicle", "Cicle")
+    this.app.addChild(this.titleCicle.element)
+    this.selectCicle = new Select("select-cicle", "Cicle")
+    let interatorCicle = 2
+    while(interatorCicle <= 10){
+      this.selectCicle.addOptions(new OptionsSelect(interatorCicle, `${interatorCicle} Cicle`))
+      interatorCicle += 1
+    }
+    this.selectCicle.addChild(this.selectCicle.options)
+    this.app.addChild(this.selectCicle.element)
+
+    this.button = new Button("button-start", 'Start')
+    this.app.addChild(this.button.element)
+    const elementButton = document.querySelector("#button-start")
+
+    this.button = new Button("button-stop", 'Stop')
+    this.app.addChild(this.button.element)
+
+    this.timer = new Timer("timer", "")
+    this.app.addChild(this.timer.element)
+    const elementTimer = document.querySelector(".timer")
+  }
+
+  hideScreen(){
+    elementButton.remove()
   }
 }
