@@ -1,6 +1,6 @@
 class Div{
   constructor(id){
-    this.element = document.querySelector("#app")
+    this.element = document.createElement("div")
     this.element.id = id
   }
   addChild(child){

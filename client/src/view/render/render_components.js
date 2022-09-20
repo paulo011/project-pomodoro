@@ -1,12 +1,14 @@
 class RenderComponents{
   constructor(){
-    this.app = new Div("app")
+    this.body = document.body
     this.timer = {}
     this.button = []
   }
 
   renderOptions(){
+
     this.app = new Div("app")
+    this.body.appendChild(this.app.element)
     this.headerMain = new Header("h1","header-main","Pomodoro")
     this.app.addChild(this.headerMain.element)
     this.titleWorkSession = new Header("h3", "title-work-session", "Work Session")
@@ -42,17 +44,27 @@ class RenderComponents{
     this.selectCicle.addChild(this.selectCicle.options)
     this.app.addChild(this.selectCicle.element)
 
-    this.button.push(new Button("button-start", 'Start'))
-    this.button.push(new Button("button-pause", 'Pause'))
-    this.button.push(new Button("button-stop", 'Stop'))
-    this.button.forEach((e)=> this.app.addChild(e.element))
 
-    this.timer = new Timer("timer", "")
+    this.startButton = new Button("button-start", 'Start')
+    this.app.addChild(this.startButton.element)
+   }
+
+  modeTimerScreen(){
+    document.querySelector("#app").remove()
+    this.app = new Div("app")
+    this.body.appendChild(this.app.element)
+    this.headerMain = new Header("h1","header-main","Pomodoro")
+    this.app.addChild(this.headerMain.element)
+    this.timer = new Timer("timer", "00:00")
     this.app.addChild(this.timer.element)
+    this.buttonStop = new Button("button-stop", 'Stop')
+    this.app.addChild(this.buttonStop.element)
+
   }
 
-  hideScreen(){
-
-    elementButton.remove()
+  modeOptionsScreen(){
+    this.button = []
+    document.querySelector("#app").remove()
+    this.renderOptions()
   }
 }

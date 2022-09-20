@@ -7,12 +7,8 @@ class RenderTimer{
 
   render(){
     const buttonStart = document.querySelector(".button-start")
-    const buttonStop = document.querySelector(".button-stop")
-    const buttonPause = document.querySelector(".button-pause")
-    const timer = document.querySelector(".timer")
+
     let flip = true
-
-
     let second = 0
     let minutes = 0
 
@@ -22,16 +18,18 @@ class RenderTimer{
       const cicle = document.querySelector(".select-cicle").value
       let cicleCount = parseInt(cicle)
 
-
+      this.renderComponents.modeTimerScreen()
+      const buttonStop = document.querySelector(".button-stop")
+      const timer = document.querySelector(".timer")
       const count =  setInterval(()=> {
         buttonStop.addEventListener("click", ()=> {
           clearInterval(count)
           second = 0
           minutes = 0
           timer.innerText = ""
-          //TODO: ADD FUNC FOR RENDER OPITINS
+          this.renderComponents.modeOptionsScreen()
+          this.render()
         })
-        buttonPause.addEventListener("click", ()=> clearInterval(count))
 
         if (minutes < 10 && second < 10){
           timer.innerText = `0${minutes}:0${second}`

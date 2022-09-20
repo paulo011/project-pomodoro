@@ -24,6 +24,10 @@ h3, h1, p{
   margin-bottom: 0;
 }
 
+h1{
+  font-size: 45px;
+}
+
 select{
   align-items: center;
   text-align: center;
@@ -41,5 +45,9 @@ align-items: center;
   display: block;
   margin-top: 5px;
   border-radius: 5px;
-
 }
+
+.timer{
+  font-size: 80px;
+}
+
