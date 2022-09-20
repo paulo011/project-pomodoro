@@ -2,8 +2,7 @@ class RenderComponents{
   constructor(){
     this.app = new Div("app")
     this.timer = {}
-    this.button = {}
-
+    this.button = []
   }
 
   renderOptions(){
@@ -43,19 +42,17 @@ class RenderComponents{
     this.selectCicle.addChild(this.selectCicle.options)
     this.app.addChild(this.selectCicle.element)
 
-    this.button = new Button("button-start", 'Start')
-    this.app.addChild(this.button.element)
-    const elementButton = document.querySelector("#button-start")
-
-    this.button = new Button("button-stop", 'Stop')
-    this.app.addChild(this.button.element)
+    this.button.push(new Button("button-start", 'Start'))
+    this.button.push(new Button("button-pause", 'Pause'))
+    this.button.push(new Button("button-stop", 'Stop'))
+    this.button.forEach((e)=> this.app.addChild(e.element))
 
     this.timer = new Timer("timer", "")
     this.app.addChild(this.timer.element)
-    const elementTimer = document.querySelector(".timer")
   }
 
   hideScreen(){
+
     elementButton.remove()
   }
 }

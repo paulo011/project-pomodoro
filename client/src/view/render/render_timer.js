@@ -6,9 +6,12 @@ class RenderTimer{
   }
 
   render(){
-    const buttonStart = document.querySelector("#button-start")
-    const buttonStop = document.querySelector("#button-stop")
+    const buttonStart = document.querySelector(".button-start")
+    const buttonStop = document.querySelector(".button-stop")
+    const buttonPause = document.querySelector(".button-pause")
     const timer = document.querySelector(".timer")
+    let flip = true
+
 
     let second = 0
     let minutes = 0
@@ -17,12 +20,19 @@ class RenderTimer{
       const WorkSession = document.querySelector(".select-work-session").value
       const shortBreak = document.querySelector(".select-short-break").value
       const cicle = document.querySelector(".select-cicle").value
-      console.log(cicle, WorkSession, shortBreak)
       let cicleCount = parseInt(cicle)
 
+
       const count =  setInterval(()=> {
-        buttonStop.addEventListener("click",()=> clearInterval(count)
-)
+        buttonStop.addEventListener("click", ()=> {
+          clearInterval(count)
+          second = 0
+          minutes = 0
+          timer.innerText = ""
+          //TODO: ADD FUNC FOR RENDER OPITINS
+        })
+        buttonPause.addEventListener("click", ()=> clearInterval(count))
+
         if (minutes < 10 && second < 10){
           timer.innerText = `0${minutes}:0${second}`
         }else if(second < 10){
@@ -33,13 +43,15 @@ class RenderTimer{
           timer.innerText = `${minutes}:${second}`
         }
 
-        if(cicleCount > 1 && minutes === WorkSession){
-          cicleCount -= 1
+        const sessionTime = flip === true ? WorkSession : shortBreak
+        if(cicleCount > 1 && minutes === parseInt(sessionTime)){
+          if(flip !== true) cicleCount -= 1
           minutes = 0
           second = 0
+          flip = !flip
         }
 
-        minutes < WorkSession ? second += 1 : clearInterval(count)
+        minutes < sessionTime ? second += 1 : clearInterval(count)
 
         if(second === 60){
           minutes += 1

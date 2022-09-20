@@ -1,7 +1,7 @@
 class Button{
-  constructor(id, textContent){
+  constructor(className, textContent){
     this.element = document.createElement("button")
-    this.element.id = id
+    this.element.className = className
     this.element.textContent = textContent
   }
 }
