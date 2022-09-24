@@ -55,16 +55,19 @@ class RenderComponents{
     this.body.appendChild(this.app.element)
     this.headerMain = new Header("h1","header-main","Pomodoro")
     this.app.addChild(this.headerMain.element)
-    this.timer = new Timer("timer", "00:00")
+    this.timer = new Timer("timer", "Start")
     this.app.addChild(this.timer.element)
     this.buttonStop = new Button("button-stop", 'Stop')
     this.app.addChild(this.buttonStop.element)
-
   }
 
   modeOptionsScreen(){
     this.button = []
     document.querySelector("#app").remove()
     this.renderOptions()
+  }
+
+  timeEnd(){
+    this.audio = new AudioBeep("audio", "client/src/beep.wav")
   }
 }

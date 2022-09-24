@@ -29,16 +29,13 @@ h1{
 }
 
 select{
-  align-items: center;
   text-align: center;
   width: 220px;
   height: 35px;
-  display: block;
   border-radius: 5px;
 }
 
 button{
-align-items: center;
   text-align: center;
   width: 220px;
   height: 35px;
